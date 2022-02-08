@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,17 +21,33 @@ namespace AssignementApi
     /// </summary>
     public partial class MainWindow : Window
     {
+        public FeedBin FeedBin1 { get; set; }
+
+
+
         public MainWindow()
         {
             InitializeComponent();
+
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void FlushProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoveProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InspectProduct_Click(object sender, RoutedEventArgs e)
         {
 
         }
