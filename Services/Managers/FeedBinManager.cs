@@ -4,8 +4,6 @@ namespace Services.Managers
 {
     public class FeedBinManager : IFeedBinManager
     {
-        public List<FeedBin> FeedBinList { get; set; }
-
         public FeedBinManager()
         {
 

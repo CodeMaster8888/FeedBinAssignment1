@@ -22,13 +22,31 @@ namespace AssignementApi
     /// </summary>
     public partial class MainWindow : Window
     {
-        public FeedBin FeedBin1 { get; set; }
+        private FeedBin FeedBin1 { get; set; }
+        private FeedBin FeedBin2 { get; set; }
+        private FeedBin FeedBin3 { get; set; }
         private readonly IFeedBinManager manager = new FeedBinManager();
 
         public MainWindow()
         {
             InitializeComponent();
             FeedBin1 = manager.CreateFeedBin(1, 20, "Mix");
+            FeedBin2 = manager.CreateFeedBin(2, 20, "Meat");
+            FeedBin3 = manager.CreateFeedBin(3, 20, "Fruit");
+        }
+
+        private FeedBin GetRadioButtonChoice()
+        {
+            if (FeedBinChoice3.IsChecked == true)
+            {
+                return FeedBin3;
+            }else if (FeedBinChoice2.IsChecked == true)
+            {
+                return FeedBin2;
+            }else
+            {
+                return FeedBin1;
+            }
         }
 
         private void AddProduct_Click(object sender, RoutedEventArgs e)
@@ -38,7 +56,8 @@ namespace AssignementApi
 
         private void FlushProduct_Click(object sender, RoutedEventArgs e)
         {
-            manager.Flush(FeedBin1);
+            var feedBin = GetRadioButtonChoice();
+            manager.Flush(feedBin);
         }
 
         private void RemoveProduct_Click(object sender, RoutedEventArgs e)
@@ -48,26 +67,29 @@ namespace AssignementApi
 
         private void InspectProduct_Click(object sender, RoutedEventArgs e)
         {
-            ProductNameValue.Content = FeedBin1.ProductName;
-            CurrentVolumeValue.Content = FeedBin1.CurrentVolume;
-            MaxVolumeValue.Content = FeedBin1.MaxVolume;
+            var feedBin = GetRadioButtonChoice();
+            ProductNameValue.Content = feedBin.ProductName;
+            CurrentVolumeValue.Content = feedBin.CurrentVolume;
+            MaxVolumeValue.Content = feedBin.MaxVolume;
             InspectPopup.IsOpen = true;
         }
 
         private void AddPopupVolume(object sender, RoutedEventArgs e)
         {
+            var feedBin = GetRadioButtonChoice();
             if (Double.TryParse(VolumeToAdd.Text, out double volumeToAdd))
             {
-                manager.AddProduct(FeedBin1, volumeToAdd);
+                manager.AddProduct(feedBin, volumeToAdd);
                 AddVolumePopup.IsOpen = false;
             }
         }
 
         private void RemovePopupVolume(object sender, RoutedEventArgs e)
         {
+            var feedBin = GetRadioButtonChoice();
             if (Double.TryParse(VolumeToRemove.Text, out double volumeToRemove))
             {
-                manager.RemoveProduct(FeedBin1, volumeToRemove);
+                manager.RemoveProduct(feedBin, volumeToRemove);
                 RemoveVolumePopup.IsOpen = false;
             }
         }

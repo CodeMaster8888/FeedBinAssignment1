@@ -6,28 +6,28 @@
         xmlns:local="clr-namespace:AssignementApi"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto" ></ColumnDefinition>
-            <ColumnDefinition Width="Auto" ></ColumnDefinition>
-            <ColumnDefinition Width="Auto" ></ColumnDefinition>
-            <ColumnDefinition Width="Auto" ></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        
 
-        <Label x:Name="FeedBinLabel1" Content="FeedBin1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="33" Width="141" Grid.Row="0" Grid.Column="0"/>
-        <Label x:Name="FeedBinLabel3" Content="FeedBin3" HorizontalAlignment="Center" VerticalAlignment="Top" Height="33" Width="141" Grid.Row="1" Grid.Column="0"/>
-        <Label x:Name="FeedBinLabel2" Content="FeedBin2" HorizontalAlignment="Center" VerticalAlignment="Top" Height="33" Width="141" Grid.Row="2" Grid.Column="0"/>
-        <Button x:Name="AddProduct" Content="Add Product" Click="AddProduct_Click" Grid.Row="0" Grid.Column="1"/>
-        <Button x:Name="FlushProduct" Content="Flush Product" Grid.Row="0" Grid.Column="2" Click="FlushProduct_Click"/>
-        <Button x:Name="RemoveProduct" Content="Remove Product" Grid.Row="0" Grid.Column="3" Click="RemoveProduct_Click" />
-        <Button x:Name="InspectProduct" Content="Inspect Product" Grid.Row="0" Grid.Column="4" Click="InspectProduct_Click" />
+    <WrapPanel Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <RadioButton IsChecked="True" x:Name="FeedBinChoice1" Grid.Row="0" Grid.Column="0" GroupName="FeedBinChoice" Content="FeedBin1"></RadioButton>
+                <RadioButton x:Name="FeedBinChoice2" Grid.Row="1" Grid.Column="0" GroupName="FeedBinChoice" Content="FeedBin2"></RadioButton>
+                <RadioButton x:Name="FeedBinChoice3" Grid.Row="2" Grid.Column="0" GroupName="FeedBinChoice" Content="FeedBin3"></RadioButton>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button x:Name="AddProduct" Content="Add Product" Click="AddProduct_Click" Grid.Row="0" Grid.Column="1"/>
+                <Button x:Name="FlushProduct" Content="Flush Product" Grid.Row="0" Grid.Column="2" Click="FlushProduct_Click"/>
+                <Button x:Name="RemoveProduct" Content="Remove Product" Grid.Row="0" Grid.Column="3" Click="RemoveProduct_Click" />
+                <Button x:Name="InspectProduct" Content="Inspect Product" Grid.Row="0" Grid.Column="4" Click="InspectProduct_Click" />
+            </StackPanel>
+        </Grid>
+
 
         <Popup x:Name="InspectPopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
             <Border Background="LightGray">
@@ -81,5 +81,5 @@
                 </WrapPanel>
             </Border>
         </Popup>
-    </Grid>
+    </WrapPanel>
 </Window>
