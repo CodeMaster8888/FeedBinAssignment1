@@ -103,5 +103,23 @@ namespace AssignementApi
         {
             RemoveVolumePopup.IsOpen = false;
         }
+
+        private void SetProductPopUpClose(object sender, RoutedEventArgs e)
+        {
+            SetProductPopup.IsOpen = false;
+        }
+
+        private void SetProduct_Click(object sender, RoutedEventArgs e)
+        {
+            SetProductPopup.IsOpen = true;
+        }
+
+        private void SetProductPopupValue(object sender, RoutedEventArgs e)
+        {
+            var feedBin = GetRadioButtonChoice();
+            var productChange = ProductNameChange.Text;
+            manager.SetProductName(feedBin,productChange);
+            SetProductPopup.IsOpen=false;
+        }
     }
 }

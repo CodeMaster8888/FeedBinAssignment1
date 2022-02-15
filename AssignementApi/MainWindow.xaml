@@ -21,10 +21,11 @@
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Button x:Name="AddProduct" Content="Add Product" Click="AddProduct_Click" Grid.Row="0" Grid.Column="1"/>
-                <Button x:Name="FlushProduct" Content="Flush Product" Grid.Row="0" Grid.Column="2" Click="FlushProduct_Click"/>
-                <Button x:Name="RemoveProduct" Content="Remove Product" Grid.Row="0" Grid.Column="3" Click="RemoveProduct_Click" />
-                <Button x:Name="InspectProduct" Content="Inspect Product" Grid.Row="0" Grid.Column="4" Click="InspectProduct_Click" />
+                <Button x:Name="AddProduct" Content="Add Product" Click="AddProduct_Click" />
+                <Button x:Name="FlushProduct" Content="Flush Product" Click="FlushProduct_Click"/>
+                <Button x:Name="RemoveProduct" Content="Remove Product" Click="RemoveProduct_Click" />
+                <Button x:Name="InspectProduct" Content="Inspect Product" Click="InspectProduct_Click" />
+                <Button x:Name="SetProduct" Content="Set Product" Click="SetProduct_Click" />
             </StackPanel>
         </Grid>
 
@@ -77,6 +78,21 @@
                     </StackPanel>
                     <StackPanel>
                         <Button Click="RemovePopUpClose" Background="Red">X</Button>
+                    </StackPanel>
+                </WrapPanel>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="SetProductPopup" StaysOpen="True" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+            <Border Background="LightGray">
+                <WrapPanel>
+                    <StackPanel>
+                        <Label Content="Product Name:"></Label>
+                        <TextBox Name="ProductNameChange"></TextBox>
+                        <Button Click="SetProductPopupValue">Change</Button>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button Click="SetProductPopUpClose" Background="Red">X</Button>
                     </StackPanel>
                 </WrapPanel>
             </Border>
