@@ -29,7 +29,7 @@
         <Button x:Name="RemoveProduct" Content="Remove Product" Grid.Row="0" Grid.Column="3" Click="RemoveProduct_Click" />
         <Button x:Name="InspectProduct" Content="Inspect Product" Grid.Row="0" Grid.Column="4" Click="InspectProduct_Click" />
 
-        <Popup x:Name="PopUp1" StaysOpen="false" Placement="Center" IsOpen="{Binding IsOpen}" Height="Auto" Width="Auto">
+        <Popup x:Name="PopUp1" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
             <Border Background="LightGray">
                 <Grid>
                     <Grid.RowDefinitions>
