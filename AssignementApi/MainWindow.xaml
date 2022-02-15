@@ -29,7 +29,7 @@
         <Button x:Name="RemoveProduct" Content="Remove Product" Grid.Row="0" Grid.Column="3" Click="RemoveProduct_Click" />
         <Button x:Name="InspectProduct" Content="Inspect Product" Grid.Row="0" Grid.Column="4" Click="InspectProduct_Click" />
 
-        <Popup x:Name="PopUp1" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+        <Popup x:Name="InspectPopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
             <Border Background="LightGray">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -48,6 +48,48 @@
                     <Label Name="ProductNameValue" Content="" Grid.Row="0" Grid.Column="1"></Label>
                     <Label Name="CurrentVolumeValue" Content="" Grid.Row="1" Grid.Column="1"></Label>
                     <Label Name="MaxVolumeValue" Content="" Grid.Row="2" Grid.Column="1"></Label>
+                </Grid>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="AddVolumePopup" StaysOpen="True" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+            <Border Background="LightGray">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <Label Content="Volume to be added:" Grid.Row="0" Grid.Column="0"></Label>
+                        <TextBox Name="VolumeToAdd" Grid.Row="0" Grid.Column="1"></TextBox>
+                    </StackPanel>
+                    
+                    <Button Grid.Row="1" Click="AddPopupVolume">Add</Button>
+                </Grid>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="RemoveVolumePopup" StaysOpen="True" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+            <Border Background="LightGray">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <Label Content="Volume to be removed:" Grid.Row="0" Grid.Column="0"></Label>
+                        <TextBox Name="VolumeToRemove" Grid.Row="0" Grid.Column="1"></TextBox>
+                    </StackPanel>
+
+                    <Button Grid.Row="1" Click="RemovePopupVolume">Remove</Button>
                 </Grid>
             </Border>
         </Popup>

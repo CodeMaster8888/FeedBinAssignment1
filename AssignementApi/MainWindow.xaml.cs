@@ -33,7 +33,7 @@ namespace AssignementApi
 
         private void AddProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            AddVolumePopup.IsOpen = true;
         }
 
         private void FlushProduct_Click(object sender, RoutedEventArgs e)
@@ -43,7 +43,7 @@ namespace AssignementApi
 
         private void RemoveProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            RemoveVolumePopup.IsOpen = true;
         }
 
         private void InspectProduct_Click(object sender, RoutedEventArgs e)
@@ -51,7 +51,25 @@ namespace AssignementApi
             ProductNameValue.Content = FeedBin1.ProductName;
             CurrentVolumeValue.Content = FeedBin1.CurrentVolume;
             MaxVolumeValue.Content = FeedBin1.MaxVolume;
-            PopUp1.IsOpen = true;
+            InspectPopup.IsOpen = true;
+        }
+
+        private void AddPopupVolume(object sender, RoutedEventArgs e)
+        {
+            if (Double.TryParse(VolumeToAdd.Text, out double volumeToAdd))
+            {
+                manager.AddProduct(FeedBin1, volumeToAdd);
+                AddVolumePopup.IsOpen = false;
+            }
+        }
+
+        private void RemovePopupVolume(object sender, RoutedEventArgs e)
+        {
+            if (Double.TryParse(VolumeToRemove.Text, out double volumeToRemove))
+            {
+                manager.RemoveProduct(FeedBin1, volumeToRemove);
+                RemoveVolumePopup.IsOpen = false;
+            }
         }
     }
 }
