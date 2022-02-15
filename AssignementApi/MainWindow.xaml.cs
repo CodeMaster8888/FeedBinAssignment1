@@ -71,5 +71,15 @@ namespace AssignementApi
                 RemoveVolumePopup.IsOpen = false;
             }
         }
+
+        private void AddPopUpClose(object sender, RoutedEventArgs e)
+        {
+            AddVolumePopup.IsOpen = false;
+        }
+
+        private void RemovePopUpClose(object sender, RoutedEventArgs e)
+        {
+            RemoveVolumePopup.IsOpen = false;
+        }
     }
 }
