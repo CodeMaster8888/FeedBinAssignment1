@@ -8,28 +8,18 @@ namespace Services.Managers
 
         public FeedBinManager()
         {
-            FeedBinList = new List<FeedBin>
-            {
-                new FeedBin{
-                    BinNumber = 1,
-                    CurrentVolume = 0,
-                    MaxVolume = 40,
-                    ProductName = ""
-                },
-                new FeedBin{
-                    BinNumber = 2,
-                    CurrentVolume = 0,
-                    MaxVolume = 40,
-                    ProductName = ""
-                },
-                new FeedBin{
-                    BinNumber = 3,
-                    CurrentVolume = 0,
-                    MaxVolume = 40,
-                    ProductName = ""
-                }
-            };
 
+        }
+
+        public FeedBin CreateFeedBin(int binNumber, int currentVolume, string productName)
+        {
+            return new FeedBin
+            {
+                BinNumber = binNumber,
+                CurrentVolume = currentVolume,
+                MaxVolume = 40,
+                ProductName = productName
+            };
         }
 
         public void SetProductName(FeedBin feedBin, string newName)

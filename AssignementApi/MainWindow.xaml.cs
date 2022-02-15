@@ -1,4 +1,5 @@
-﻿using Services.Models;
+﻿using Services.Managers;
+using Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +23,12 @@ namespace AssignementApi
     public partial class MainWindow : Window
     {
         public FeedBin FeedBin1 { get; set; }
-
-
+        private readonly IFeedBinManager manager = new FeedBinManager();
 
         public MainWindow()
         {
             InitializeComponent();
-
-
+            FeedBin1 = manager.CreateFeedBin(1, 20, "Mix");
         }
 
         private void AddProduct_Click(object sender, RoutedEventArgs e)
@@ -39,7 +38,7 @@ namespace AssignementApi
 
         private void FlushProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            manager.Flush(FeedBin1);
         }
 
         private void RemoveProduct_Click(object sender, RoutedEventArgs e)
@@ -49,7 +48,10 @@ namespace AssignementApi
 
         private void InspectProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductNameValue.Content = FeedBin1.ProductName;
+            CurrentVolumeValue.Content = FeedBin1.CurrentVolume;
+            MaxVolumeValue.Content = FeedBin1.MaxVolume;
+            PopUp1.IsOpen = true;
         }
     }
 }
