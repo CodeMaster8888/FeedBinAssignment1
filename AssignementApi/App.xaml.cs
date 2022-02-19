@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Database.Context;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,13 +16,16 @@ namespace AssignementApi
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnActivated(EventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnActivated(e);
+            base.OnStartup(e);
 
-            SupervisorWindow NewWindowB = new SupervisorWindow();
+            var mainWindow = new MainWindow();
 
-            NewWindowB.Show();
+            var supervisorWindow = new SupervisorWindow();
+
+            mainWindow.Show();
+            supervisorWindow.Show();
         }
     }
 }
