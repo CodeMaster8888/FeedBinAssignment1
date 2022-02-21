@@ -11,5 +11,6 @@ namespace Services.Managers
     {
         bool CheckBatch(List<FeedBin> feedBins, Batch batch);
         void MakeBatch(List<FeedBin> feedBins, Batch batch);
+        List<ReportBatch> ReportBatch(List<FeedBin> feedBins, Batch batch);
     }
 }

@@ -78,5 +78,47 @@ namespace UnitTesting.Services.Managers
                 14,
                 feedBins.Single(x => x.ProductName == Batch.Recipe.SecondIngredient.ProductName).CurrentVolume);
         }
+
+        [Fact]
+        public void ReportBatch_ShouldReportNoProductInBin()
+        {
+            var testBatch = new Batch
+            {
+                Amount = 40,
+                Recipe = new Recipe
+                {
+                    FirstIngredient = new Ingredient
+                    {
+                         ProductName = "Test2"
+                    },
+                    SecondIngredient = new Ingredient
+                    {
+                        ProductName = "Test1"
+                    },
+                    FirstPercentage = 0.1,
+                    SecondPercentage = 0.9
+                }
+            };
+
+            var result = supervisorManager.ReportBatch(feedBins, testBatch);
+            var expected = new List<ReportBatch>
+            {
+                new ReportBatch
+                {
+                    Id = 1,
+                    Reason = "First Ingredient " +
+                    testBatch.Recipe.FirstIngredient.ProductName + " not in any of the feed bins"
+                },
+                new ReportBatch
+                {
+                    Id = 4,
+                    FeedBin = feedBins.Single(x => x.BinNumber == 1),
+                    Reason = "There is not enough product in the feed bin"
+                }
+            };
+
+            Assert.Equal(expected.Single(x => x.Id == 1).Reason, result.Single(x => x.Id == 1).Reason);
+            Assert.Equal(expected.Single(x => x.Id == 4).FeedBin, result.Single(x => x.Id == 4).FeedBin);
+        }
     }
 }

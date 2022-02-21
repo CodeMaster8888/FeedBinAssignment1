@@ -37,9 +37,51 @@ namespace Services.Managers
             }
         }
 
-        public void ReportBatch()
+        public List<ReportBatch> ReportBatch(List<FeedBin> feedBins, Batch batch)
         {
-             
+            List<ReportBatch> reportBatches = new List<ReportBatch>();
+
+            var (firstValue, secondValue) = CalculateValues(batch);
+
+            FeedBin? firstCheck = feedBins.SingleOrDefault(x => x.ProductName == batch.Recipe.FirstIngredient.ProductName);
+            FeedBin? secondCheck = feedBins.SingleOrDefault(x => x.ProductName == batch.Recipe.SecondIngredient.ProductName);
+
+            if (firstCheck == null)
+            {
+                reportBatches.Add(new ReportBatch
+                {
+                    Id = 1,
+                    Reason = "First Ingredient " + batch.Recipe.FirstIngredient.ProductName + " not in any of the feed bins"
+                });
+            }
+            else if (firstCheck.CurrentVolume < firstValue)
+            {
+                reportBatches.Add(new ReportBatch
+                {
+                    Id = 3,
+                    FeedBin = firstCheck,
+                    Reason = "There is not enough product in the feed bin"
+                });
+            }
+            if (secondCheck == null)
+            {
+                reportBatches.Add(new ReportBatch
+                {
+                    Id = 2,
+                    Reason = "Second Ingredient " + batch.Recipe.SecondIngredient.ProductName + " not in any of the feed bins"
+                });
+            }
+            else if (secondCheck.CurrentVolume < secondValue)
+            {
+                reportBatches.Add(new ReportBatch
+                {
+                    Id = 4,
+                    FeedBin = secondCheck,
+                    Reason = "There is not enough product in the feed bin"
+                });
+            }
+
+            return reportBatches;
         }
 
         public bool CheckBatch(List<FeedBin> feedBins, Batch batch)
