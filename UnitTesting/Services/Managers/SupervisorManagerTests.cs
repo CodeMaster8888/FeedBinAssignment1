@@ -59,11 +59,24 @@ namespace UnitTesting.Services.Managers
         }
 
         [Fact]
-        public void test1()
+        public void CheckBatch_ShouldBeTrue()
         {
             var result = supervisorManager.CheckBatch(feedBins, Batch);
 
             Assert.True(result);
+        }
+
+        [Fact]
+        public void MakeBatch_ShouldRemoveVolume()
+        {
+            supervisorManager.MakeBatch(feedBins, Batch);
+
+            Assert.Equal(
+                6,
+                feedBins.Single(x => x.ProductName == Batch.Recipe.FirstIngredient.ProductName).CurrentVolume);
+            Assert.Equal(
+                14,
+                feedBins.Single(x => x.ProductName == Batch.Recipe.SecondIngredient.ProductName).CurrentVolume);
         }
     }
 }

@@ -10,5 +10,6 @@ namespace Services.Managers
     public interface ISupervisorManager
     {
         bool CheckBatch(List<FeedBin> feedBins, Batch batch);
+        void MakeBatch(List<FeedBin> feedBins, Batch batch);
     }
 }
