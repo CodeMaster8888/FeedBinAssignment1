@@ -20,6 +20,12 @@
             <ListView x:Name="BatchListName">
 
             </ListView>
+
+            <ListView>
+                <RadioButton IsChecked="True" x:Name="BatchChoice1" GroupName="FeedBinChoice"></RadioButton>
+                <RadioButton x:Name="BatchChoice2" GroupName="FeedBinChoice"></RadioButton>
+                <RadioButton x:Name="BatchChoice3" GroupName="FeedBinChoice"></RadioButton>
+            </ListView>
         </StackPanel>
         <StackPanel>
             <Button x:Name="CheckBatch" Click="CheckBatch_Click" Content="Check Batch"></Button>
@@ -58,14 +64,14 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Content="Reason:" Grid.Row="0" Grid.Column="0"></Label>
-                    <Label Name="ReportFeedbin1Label" Content="FeedBin:" Grid.Row="1" Grid.Column="0" Visibility="Hidden"></Label>
-                    <Label Name="ReportFeedBin1ReasonValue" Content="" Grid.Row="0" Grid.Column="1" Visibility="Hidden"></Label>
-                    <Label Name="ReportFeedBin1Value" Content="" Grid.Row="1" Grid.Column="1" Visibility="Hidden"></Label>
+                    <Label Name="ReportFeedbin1Label" Content="FeedBin:" Grid.Row="1" Grid.Column="0" Visibility="Collapsed"></Label>
+                    <Label Name="ReportFeedBin1ReasonValue" Content="" Grid.Row="0" Grid.Column="1" Visibility="Collapsed"></Label>
+                    <Label Name="ReportFeedBin1Value" Content="" Grid.Row="1" Grid.Column="1" Visibility="Collapsed"></Label>
 
-                    <Label Name="ReportFeedBin2ReasonLabel" Content="Reason:" Grid.Row="2" Grid.Column="0" Visibility="Hidden"></Label>
-                    <Label Name="ReportFeedbin2Label" Content="FeedBin:" Grid.Row="3" Grid.Column="0" Visibility="Hidden"></Label>
-                    <Label Name="ReportFeedBin2ReasonValue" Content="" Grid.Row="2" Grid.Column="1" Visibility="Hidden"></Label>
-                    <Label Name="ReportFeedBin2Value" Content="" Grid.Row="3" Grid.Column="1" Visibility="Hidden"></Label>
+                    <Label Name="ReportFeedBin2ReasonLabel" Content="Reason:" Grid.Row="2" Grid.Column="0" Visibility="Collapsed"></Label>
+                    <Label Name="ReportFeedbin2Label" Content="FeedBin:" Grid.Row="3" Grid.Column="0" Visibility="Collapsed"></Label>
+                    <Label Name="ReportFeedBin2ReasonValue" Content="" Grid.Row="2" Grid.Column="1" Visibility="Collapsed"></Label>
+                    <Label Name="ReportFeedBin2Value" Content="" Grid.Row="3" Grid.Column="1" Visibility="Collapsed"></Label>
                 </Grid>
             </Border>
         </Popup>

@@ -61,7 +61,7 @@ namespace AssignementApi
                         SecondIngredient = new Ingredient{ProductName = "Fruit"},
                         FirstPercentage = 0.5,
                         SecondPercentage = 0.5,
-                        Name = "MeatMix"
+                        Name = "MeatFruit"
                     }
                 },
                 new Batch
@@ -74,15 +74,30 @@ namespace AssignementApi
                         SecondIngredient = new Ingredient{ProductName = "Vegetables"},
                         FirstPercentage = 0.8,
                         SecondPercentage = 0.2,
-                        Name = "FruitMix"
+                        Name = "MeatVeg"
                     }
                 },
+                new Batch
+                {
+                    Amount = 25,
+                    Id = 3,
+                    Recipe = new Recipe
+                    {
+                        FirstIngredient = new Ingredient{ ProductName = "Fish"},
+                        SecondIngredient = new Ingredient{ProductName = "Vegetables"},
+                        FirstPercentage = 0.7,
+                        SecondPercentage = 0.3,
+                        Name = "FishVeg"
+                    }
+                }
             };
         }
 
         private void CheckBatch_Click(object sender, RoutedEventArgs e)
         {
-            var result = supervisorManager.CheckBatch(FeedBins, Batches.First());
+            Batch batch = GetBatchChoice();
+
+            var result = supervisorManager.CheckBatch(FeedBins, batch);
 
             if (result == false)
             {
@@ -96,7 +111,20 @@ namespace AssignementApi
 
         private void ReportBatch_Click(object sender, RoutedEventArgs e)
         {
-            ReportBatches = supervisorManager.ReportBatch(FeedBins, Batches.Last());
+            ReportFeedBin1Value.Visibility = Visibility.Collapsed;
+            ReportFeedbin1Label.Visibility = Visibility.Collapsed;
+
+            ReportFeedbin2Label.Visibility = Visibility.Collapsed;
+            ReportFeedBin2Value.Visibility = Visibility.Collapsed;
+
+            ReportFeedBin1ReasonValue.Visibility = Visibility.Collapsed;
+
+            ReportFeedBin2ReasonLabel.Visibility = Visibility.Collapsed;
+            ReportFeedBin2ReasonValue.Visibility = Visibility.Collapsed;
+
+            Batch batch = GetBatchChoice();
+
+            ReportBatches = supervisorManager.ReportBatch(FeedBins, batch);
 
             if(ReportBatches.Count == 2)
             {
@@ -142,9 +170,27 @@ namespace AssignementApi
         }
         private void MakeBatch_Click(object sender, RoutedEventArgs e)
         {
-            supervisorManager.MakeBatch(FeedBins, Batches.First());
+            Batch batch = GetBatchChoice();
+
+            supervisorManager.MakeBatch(FeedBins, batch);
 
             MakebatchTruePopup.IsOpen = true;
+        }
+
+        private Batch GetBatchChoice()
+        {
+            if (BatchChoice3.IsChecked == true)
+            {
+                return Batches.Single(x => x.Id == 3);
+            }
+            else if (BatchChoice2.IsChecked == true)
+            {
+                return Batches.Single(x => x.Id == 2);
+            }
+            else
+            {
+                return Batches.Single(x => x.Id == 1);
+            }
         }
     }
 }
