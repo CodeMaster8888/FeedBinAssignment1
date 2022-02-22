@@ -192,5 +192,25 @@ namespace AssignementApi
                 return Batches.Single(x => x.Id == 1);
             }
         }
+
+        private void InspectBins_Click(object sender, RoutedEventArgs e)
+        {
+            BinNumberValue1.Content = FeedBins.Single(x => x.BinNumber == 1).BinNumber;
+            ProductNameValue1.Content = FeedBins.Single(x => x.BinNumber == 1).ProductName;
+            CurrentVolumeValue1.Content = FeedBins.Single(x => x.BinNumber == 1).CurrentVolume;
+            MaxVolumeValue1.Content = FeedBins.Single(x => x.BinNumber == 1).MaxVolume;
+
+            BinNumberValue2.Content = FeedBins.Single(x => x.BinNumber == 2).BinNumber;
+            ProductNameValue2.Content = FeedBins.Single(x => x.BinNumber == 2).ProductName;
+            CurrentVolumeValue2.Content = FeedBins.Single(x => x.BinNumber == 2).CurrentVolume;
+            MaxVolumeValue2.Content = FeedBins.Single(x => x.BinNumber == 2).MaxVolume;
+
+            BinNumberValue3.Content = FeedBins.Single(x => x.BinNumber == 3).BinNumber;
+            ProductNameValue3.Content = FeedBins.Single(x => x.BinNumber == 3).ProductName;
+            CurrentVolumeValue3.Content = FeedBins.Single(x => x.BinNumber == 3).CurrentVolume;
+            MaxVolumeValue3.Content = FeedBins.Single(x => x.BinNumber == 3).MaxVolume;
+
+            InspectBinsPopup.IsOpen = true;
+        }
     }
 }

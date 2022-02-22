@@ -31,6 +31,7 @@
             <Button x:Name="CheckBatch" Click="CheckBatch_Click" Content="Check Batch"></Button>
             <Button x:Name="ReportBatch" Click="ReportBatch_Click" Content="Report Batch"></Button>
             <Button x:Name="MakeBatch" Click="MakeBatch_Click" Content="Make Batch"></Button>
+            <Button x:Name="InspectBins" Click="InspectBins_Click" Content="Inspect Bins"></Button>
         </StackPanel>
 
 
@@ -88,6 +89,60 @@
             <Border Background="LightGray">
                 <Grid>
                     <Label Content="This batch has been made."></Label>
+                </Grid>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="InspectBinsPopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+            <Border Background="LightGray">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Bin Number:" Grid.Row="0" Grid.Column="0"></Label>
+                    <Label Content="ProductName:" Grid.Row="1" Grid.Column="0"></Label>
+                    <Label Content="CurrentVolume:" Grid.Row="2" Grid.Column="0"></Label>
+                    <Label Content="MaxVolume:" Grid.Row="3" Grid.Column="0"></Label>
+                    <Label Name="BinNumberValue1" Content="" Grid.Row="0" Grid.Column="1"></Label>
+                    <Label Name="ProductNameValue1" Content="" Grid.Row="1" Grid.Column="1"></Label>
+                    <Label Name="CurrentVolumeValue1" Content="" Grid.Row="2" Grid.Column="1"></Label>
+                    <Label Name="MaxVolumeValue1" Content="" Grid.Row="3" Grid.Column="1"></Label>
+
+                    <Label Content="Bin Number:" Grid.Row="4" Grid.Column="0"></Label>
+                    <Label Content="ProductName:" Grid.Row="5" Grid.Column="0"></Label>
+                    <Label Content="CurrentVolume:" Grid.Row="6" Grid.Column="0"></Label>
+                    <Label Content="MaxVolume:" Grid.Row="7" Grid.Column="0"></Label>
+                    <Label Name="BinNumberValue2" Content="" Grid.Row="4" Grid.Column="1"></Label>
+                    <Label Name="ProductNameValue2" Content="" Grid.Row="5" Grid.Column="1"></Label>
+                    <Label Name="CurrentVolumeValue2" Content="" Grid.Row="6" Grid.Column="1"></Label>
+                    <Label Name="MaxVolumeValue2" Content="" Grid.Row="7" Grid.Column="1"></Label>
+
+                    <Label Content="Bin Number:" Grid.Row="8" Grid.Column="0"></Label>
+                    <Label Content="ProductName:" Grid.Row="9" Grid.Column="0"></Label>
+                    <Label Content="CurrentVolume:" Grid.Row="10" Grid.Column="0"></Label>
+                    <Label Content="MaxVolume:" Grid.Row="11" Grid.Column="0"></Label>
+                    <Label Name="BinNumberValue3" Content="" Grid.Row="8" Grid.Column="1"></Label>
+                    <Label Name="ProductNameValue3" Content="" Grid.Row="9" Grid.Column="1"></Label>
+                    <Label Name="CurrentVolumeValue3" Content="" Grid.Row="10" Grid.Column="1"></Label>
+                    <Label Name="MaxVolumeValue3" Content="" Grid.Row="11" Grid.Column="1"></Label>
                 </Grid>
             </Border>
         </Popup>
