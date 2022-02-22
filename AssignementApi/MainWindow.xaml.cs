@@ -27,12 +27,12 @@ namespace AssignementApi
         private FeedBin FeedBin3 { get; set; }
         private readonly IFeedBinManager manager = new FeedBinManager();
 
-        public MainWindow()
+        public MainWindow(List<FeedBin> feedBins)
         {
             InitializeComponent();
-            FeedBin1 = manager.CreateFeedBin(1, 20, "Mix");
-            FeedBin2 = manager.CreateFeedBin(2, 20, "Meat");
-            FeedBin3 = manager.CreateFeedBin(3, 20, "Fruit");
+            FeedBin1 = feedBins.Single(x => x.BinNumber == 1);
+            FeedBin2 = feedBins.Single(x => x.BinNumber == 2);
+            FeedBin3 = feedBins.Single(x => x.BinNumber == 3);
         }
 
         private FeedBin GetRadioButtonChoice()

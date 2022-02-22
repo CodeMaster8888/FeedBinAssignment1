@@ -6,7 +6,84 @@
         xmlns:local="clr-namespace:AssignementApi"
         mc:Ignorable="d"
         Title="SupervisorWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <WrapPanel>
+        <StackPanel Orientation="Horizontal">
+            <ListView x:Name="BatchListAmount">
+                
+            </ListView>
+            <ListView x:Name="BatchListFirstIngredient">
+
+            </ListView>
+            <ListView x:Name="BatchListSecondIngredient">
+
+            </ListView>
+            <ListView x:Name="BatchListName">
+
+            </ListView>
+        </StackPanel>
+        <StackPanel>
+            <Button x:Name="CheckBatch" Click="CheckBatch_Click" Content="Check Batch"></Button>
+            <Button x:Name="ReportBatch" Click="ReportBatch_Click" Content="Report Batch"></Button>
+            <Button x:Name="MakeBatch" Click="MakeBatch_Click" Content="Make Batch"></Button>
+        </StackPanel>
+
+
+        <Popup x:Name="CheckbatchTruePopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+            <Border Background="LightGray">
+                <Grid>
+                    <Label Content="This batch can be created"></Label>
+                </Grid>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="CheckbatchFalsePopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+            <Border Background="LightGray">
+                <Grid>
+                    <Label Content="This batch can't be created"></Label>
+                </Grid>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="ReportbatchTruePopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+            <Border Background="LightGray">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Reason:" Grid.Row="0" Grid.Column="0"></Label>
+                    <Label Name="ReportFeedbin1Label" Content="FeedBin:" Grid.Row="1" Grid.Column="0" Visibility="Hidden"></Label>
+                    <Label Name="ReportFeedBin1ReasonValue" Content="" Grid.Row="0" Grid.Column="1" Visibility="Hidden"></Label>
+                    <Label Name="ReportFeedBin1Value" Content="" Grid.Row="1" Grid.Column="1" Visibility="Hidden"></Label>
+
+                    <Label Name="ReportFeedBin2ReasonLabel" Content="Reason:" Grid.Row="2" Grid.Column="0" Visibility="Hidden"></Label>
+                    <Label Name="ReportFeedbin2Label" Content="FeedBin:" Grid.Row="3" Grid.Column="0" Visibility="Hidden"></Label>
+                    <Label Name="ReportFeedBin2ReasonValue" Content="" Grid.Row="2" Grid.Column="1" Visibility="Hidden"></Label>
+                    <Label Name="ReportFeedBin2Value" Content="" Grid.Row="3" Grid.Column="1" Visibility="Hidden"></Label>
+                </Grid>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="ReportbatchFalsePopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+            <Border Background="LightGray">
+                <Grid>
+                    <Label Content="This batch can be created"></Label>
+                </Grid>
+            </Border>
+        </Popup>
+
+        <Popup x:Name="MakebatchTruePopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
+            <Border Background="LightGray">
+                <Grid>
+                    <Label Content="This batch has been made."></Label>
+                </Grid>
+            </Border>
+        </Popup>
+    </WrapPanel>
 </Window>
