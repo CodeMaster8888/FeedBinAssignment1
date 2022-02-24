@@ -29,25 +29,29 @@
         </StackPanel>
         <StackPanel>
             <Button x:Name="CheckBatch" Click="CheckBatch_Click" Content="Check Batch"></Button>
-            <Button x:Name="ReportBatch" Click="ReportBatch_Click" Content="Report Batch"></Button>
-            <Button x:Name="MakeBatch" Click="MakeBatch_Click" Content="Make Batch"></Button>
             <Button x:Name="InspectBins" Click="InspectBins_Click" Content="Inspect Bins"></Button>
         </StackPanel>
 
 
         <Popup x:Name="CheckbatchTruePopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
             <Border Background="LightGray">
-                <Grid>
-                    <Label Content="This batch can be created"></Label>
-                </Grid>
+                <WrapPanel>
+                    <StackPanel>
+                        <Label Content="This batch can be created"></Label>
+                        <Button x:Name="MakeBatch" Click="MakeBatch_Click" Content="Make Batch"></Button>
+                    </StackPanel>
+                </WrapPanel>
             </Border>
         </Popup>
 
         <Popup x:Name="CheckbatchFalsePopup" StaysOpen="false" Placement="Center" IsOpen="false" Height="Auto" Width="Auto">
             <Border Background="LightGray">
-                <Grid>
-                    <Label Content="This batch can't be created"></Label>
-                </Grid>
+                <WrapPanel>
+                    <StackPanel>
+                        <Label Content="This batch can't be created"></Label>
+                        <Button x:Name="ReportBatch" Click="ReportBatch_Click" Content="Report Batch"></Button>
+                    </StackPanel>
+                </WrapPanel>
             </Border>
         </Popup>
 
