@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace AssignementApi
 {
@@ -24,19 +25,32 @@ namespace AssignementApi
         {
             base.OnStartup(e);
 
-
             List<FeedBin> FeedBins = new List<FeedBin>();
 
             FeedBins.Add(manager.CreateFeedBin(1, 20, "Mix"));
             FeedBins.Add(manager.CreateFeedBin(2, 20, "Meat"));
             FeedBins.Add(manager.CreateFeedBin(3, 20, "Fruit"));
 
-            var mainWindow = new MainWindow(FeedBins);
+            Thread thread1 = new Thread(() => {
+                var mainWindow = new MainWindow(FeedBins);
+                mainWindow.Show();
+                Dispatcher.Run();
+            });
 
-            var supervisorWindow = new SupervisorWindow(FeedBins);
+            Thread thread2 = new Thread(() => {
+                var supervisorWindow = new SupervisorWindow(FeedBins);
+                supervisorWindow.Show();
+                Dispatcher.Run();
+            });
 
-            mainWindow.Show();
-            supervisorWindow.Show();
+            thread1.SetApartmentState(ApartmentState.STA);
+            thread2.SetApartmentState(ApartmentState.STA);
+
+            thread1.IsBackground = true;
+            thread2.IsBackground = true;
+
+            thread1.Start();
+            thread2.Start();
         }
     }
 }
